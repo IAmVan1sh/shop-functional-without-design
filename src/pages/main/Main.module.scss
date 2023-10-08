@@ -16,11 +16,11 @@ $basket-icon-size: 30px;
 		justify-content: center;
 		align-items: center;
 		background-color: darkorchid;
-		width: $basket-icon-size / 1.6;
-		height: $basket-icon-size / 1.6;
+		width: calc($basket-icon-size / 1.6);
+		height: calc($basket-icon-size / 1.6);
 		border-radius: 50%;
-		right: $basket-icon-size / 1.1 + 30px;
-		top: $basket-icon-size * 1.2;
+		right: calc($basket-icon-size / 1.1 + 30px);
+		top: calc($basket-icon-size * 1.2);
 		position: absolute;
 		pointer-events: none;
 	}
