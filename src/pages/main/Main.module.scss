@@ -1,0 +1,27 @@
+$basket-icon-size: 30px;
+
+.main_header {
+	display: flex;
+	justify-content: end;
+
+	& > a > svg {
+		margin-top: 10px;
+		height: $basket-icon-size;
+		width: $basket-icon-size;
+		position: relative;
+	}
+
+	& span {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: darkorchid;
+		width: $basket-icon-size / 1.6;
+		height: $basket-icon-size / 1.6;
+		border-radius: 50%;
+		right: $basket-icon-size / 1.1 + 30px;
+		top: $basket-icon-size * 1.2;
+		position: absolute;
+		pointer-events: none;
+	}
+}

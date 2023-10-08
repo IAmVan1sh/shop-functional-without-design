@@ -1,0 +1,12 @@
+$back-icon-size: 30px;
+
+.basket {
+	display: flex;
+	justify-content: end;
+
+	& > a > svg {
+		margin-top: 10px;
+		width: $back-icon-size;
+		height: $back-icon-size;
+	}
+}
