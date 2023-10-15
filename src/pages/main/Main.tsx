@@ -9,25 +9,26 @@ import {BASKET_ROUTE} from "../../utils/consts.ts";
 const Main = () => {
 	const basket = useAppSelector(state => state.cart);
 
-	console.log(basket);
-
 	return (
 		<main>
+
 			<header className={styles.main_header}>
 				<NavLink to={BASKET_ROUTE}>
 					<BsBagHeart />
 				</NavLink>
 				<span>{basket.length}</span>
 			</header>
+
 			<section>
-				{CardsBase.map(card =>
-					basket.some(element => element.id === card.id)
+				{CardsBase.map(product =>
+					basket.some(element => element.items.id === product.id)
 						?
 						""
 						:
-						<Card key={card.id} card={card}/>
+						<Card key={product.id} id={product.id} product={product}/>
 				)}
 			</section>
+
 		</main>
 	);
 };

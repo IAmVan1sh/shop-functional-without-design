@@ -1,8 +1,15 @@
 $basket-icon-size: 30px;
 
+main {
+	& section {
+		padding: 10px;
+	}
+}
+
 .main_header {
 	display: flex;
 	justify-content: end;
+	padding-right: 10px;
 
 	& > a > svg {
 		margin-top: 10px;
@@ -19,7 +26,7 @@ $basket-icon-size: 30px;
 		width: calc($basket-icon-size / 1.6);
 		height: calc($basket-icon-size / 1.6);
 		border-radius: 50%;
-		right: calc($basket-icon-size / 1.1 + 30px);
+		right: calc($basket-icon-size / 1.1 + 40px);
 		top: calc($basket-icon-size * 1.2);
 		position: absolute;
 		pointer-events: none;

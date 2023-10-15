@@ -1,19 +1,19 @@
 import styles from "./Card.module.scss";
 import {FC} from "react";
-import CardProps from "../../types/CardType.ts";
-import {useAppSelector} from "../../store/hooks.ts";
 import useActions from "../../hooks/useActions.ts";
+import CardType from "../../types/CardTypes.ts";
 
-const Card: FC<CardProps> = ({card}) => {
-	const basket = useAppSelector(state => state.cart);
-	const { toggleCart } = useActions();
-	const inBasket = basket.some(element => element.id === card.id);
+const Card: FC<CardType> = ({product}) => {
+	const { toggleCart} = useActions();
 
 	return (
 		<div className={styles.card}>
-			<h3>{card.title}</h3>
-			<button onClick={() => toggleCart(card)}>
-				{!inBasket ? "Add to" : "Remove from"} cart
+			<h3>{product.title}</h3>
+
+			<span className={styles.price}>${product.price}</span>
+
+			<button onClick={() => toggleCart({id: product.id, product: product, quantity: 1})}>
+				Add to cart
 			</button>
 		</div>
 	);

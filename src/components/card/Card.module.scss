@@ -4,16 +4,67 @@
 	border-radius: 10px;
 	margin-top: 10px;
 
+	&:first-child {
+		margin-top: 0;
+	}
+
+	// Title
 	& h3 {
 		line-height: 14px;
 		padding: 0;
 		margin: 0;
 	}
 
+	// Button
 	& button {
+		border: 0;
+		border-radius: 6px;
+		background-color: #6e6e6e;
+
+		&:hover {
+			background-color: #969696;
+		}
+		&:active {
+			background-color: #868686;
+		}
+	}
+
+	& > button {
 		cursor: pointer;
 		padding: 4px 18px;
 		margin-top: 14px;
-		border-radius: 6px;
+	}
+}
+
+// Price
+.price {
+	display: block;
+	font-weight: 400;
+	color: #1baf1b;
+	margin-top: 14px;
+}
+
+// Counter
+.card_counter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100px;
+	margin-top: 14px;
+
+	& input::-webkit-outer-spin-button,
+	& input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	& input[type="number"] {
+		-moz-appearance: textfield;
+	}
+
+	& > button {
+		cursor: pointer;
+		width: 24px;
+		height: 24px;
 	}
 }

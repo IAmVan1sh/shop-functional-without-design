@@ -1,25 +1,35 @@
 import {CaseReducer, createSlice} from "@reduxjs/toolkit";
-import {CardInstance} from "../../types/CardType.ts";
+import CartItem from "../../types/CartTypes.ts";
 
-type InitialStateType = CardInstance[];
+interface InitialStateType {
+	items: CartItem;
+}
 
-const initialState: InitialStateType = [];
+const initialState: InitialStateType[] = [];
 
 interface CartAction {
     type: string;
-    payload: CardInstance;
+    payload: CartItem;
 }
 
-const toggleCart: CaseReducer<CardInstance[], CartAction> = (state, {payload: card}) => {
-	const isExists = state.some(c => c.id === card.id);
+const toggleCart: CaseReducer<InitialStateType[], CartAction> = (state, {payload: item}) => {
+	const isExist = state.some(c => c.items.id === item.id);
 
-	if (isExists) {
-		const index = state.findIndex(c => c.id === card.id);
+	if (isExist) {
+		const index = state.findIndex(c => c.items.id === item.id);
 		if (index != -1) {
 			state.splice(index, 1);
 		}
 	} else {
-		state.push(card);
+		state.push({items: item});
+	}
+};
+
+const changeQuantity: CaseReducer<InitialStateType[], CartAction> = (state, {payload: item}) => {
+	const isExistIndex = state.findIndex(c => c.items.id === item.id);
+
+	if (isExistIndex !== -1) {
+		state[isExistIndex].items.quantity += item.quantity;
 	}
 };
 
@@ -28,6 +38,7 @@ const CartSlice = createSlice({
 	initialState,
 	reducers: {
 		toggleCart,
+		changeQuantity,
 	}
 });
 
