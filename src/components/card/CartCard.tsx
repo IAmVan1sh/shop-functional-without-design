@@ -2,21 +2,21 @@ import styles from "./Card.module.scss";
 import {FC} from "react";
 import {useAppSelector} from "../../store/hooks.ts";
 import useActions from "../../hooks/useActions.ts";
-import CartTypes from "../../types/CartTypes.ts";
+import {CartItem} from "../../types/CartTypes.ts";
 
-const Card: FC<CartTypes> = ({product}) => {
-	const basket = useAppSelector(state => state.cart);
+const Card: FC<CartItem> = ({product}) => {
+	const basket = useAppSelector(state => state.cart.items);
 	const { toggleCart, changeQuantity} = useActions();
-	const index = basket.findIndex(element => element.items.id === product.id);
+	const index = basket.findIndex(element => element.id === product.id);
 
 	const buttonsCounterHandler = async (value: number) => {
 		if (value < 0) {
-			if (basket[index].items.quantity + value > 0) {
-				changeQuantity({id: product.id, product: product, quantity: value});
+			if (basket[index].quantity + value > 0) {
+				changeQuantity({product: product, quantity: value});
 			}
 		} else {
-			if (basket[index].items.quantity + value < 100) {
-				changeQuantity({id: product.id, product: product, quantity: value});
+			if (basket[index].quantity + value < 100) {
+				changeQuantity({product: product, quantity: value});
 			}
 		}
 	};
@@ -30,12 +30,12 @@ const Card: FC<CartTypes> = ({product}) => {
 			<div className={styles.card_counter}>
 				<button onClick={() => buttonsCounterHandler(-1)}>-</button>
 
-				<span>{basket[index].items.quantity}</span>
+				<span>{basket[index].quantity}</span>
 
 				<button onClick={() => buttonsCounterHandler(1)}>+</button>
 			</div>
 
-			<button onClick={() => toggleCart({id: product.id, product: product, quantity: 1})}>
+			<button onClick={() => toggleCart({product: product, quantity: 1})}>
 				Remove from cart
 			</button>
 		</div>

@@ -1,9 +1,15 @@
 import ProductType from "./ProductTypes.ts";
 
-interface CartItem {
+export interface CartItem {
     id: number;
     product: ProductType;
     quantity: number;
 }
 
-export default CartItem;
+export interface CartAction extends Omit<CartItem, "id"> {
+
+}
+
+export interface InitialStateType {
+    items: CartItem[];
+}

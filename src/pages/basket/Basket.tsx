@@ -7,11 +7,11 @@ import {FC} from "react";
 import CartCard from "../../components/card/CartCard.tsx";
 
 const Basket: FC = () => {
-	const basket = useAppSelector(state => state.cart);
+	const basket = useAppSelector(state => state.cart.items);
 	let sum = 0;
 
 	for (const num of basket) {
-		const temp = num.items.product.price * num.items.quantity;
+		const temp = num.product.price * num.quantity;
 		sum += temp;
 	}
 	
@@ -28,7 +28,7 @@ const Basket: FC = () => {
 
 				<section>
 					{basket.map(cart =>
-						<CartCard key={cart.items.id} id={cart.items.id} product={cart.items.product} quantity={1}/>
+						<CartCard key={cart.id} id={cart.id} product={cart.product} quantity={1}/>
 					)}
 
 					{basket.length === 0 &&

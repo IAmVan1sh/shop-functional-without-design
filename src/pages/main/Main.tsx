@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 import {BASKET_ROUTE} from "../../utils/consts.ts";
 
 const Main = () => {
-	const basket = useAppSelector(state => state.cart);
+	const basket = useAppSelector(state => state.cart.items);
 
 	return (
 		<main>
@@ -21,7 +21,7 @@ const Main = () => {
 
 			<section>
 				{CardsBase.map(product =>
-					basket.some(element => element.items.id === product.id)
+					basket.some(element => element.id === product.id)
 						?
 						""
 						:
