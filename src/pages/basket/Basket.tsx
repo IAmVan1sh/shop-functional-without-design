@@ -5,6 +5,7 @@ import {BiArrowBack} from "react-icons/bi";
 import styles from "./Basket.module.scss";
 import {FC} from "react";
 import CartCard from "../../components/card/CartCard.tsx";
+import {formatToCurrency} from "../../utils/formatToCurrency.ts";
 
 const Basket: FC = () => {
 	const basket = useAppSelector(state => state.cart.items);
@@ -45,7 +46,7 @@ const Basket: FC = () => {
 
 						<h1>Summary</h1>
 
-						<span>PRICE: ${sum.toFixed(2)}</span>
+						<span>PRICE: {formatToCurrency(sum)}</span>
 
 					</div>
 

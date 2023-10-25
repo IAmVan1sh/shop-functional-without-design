@@ -3,6 +3,7 @@ import {FC} from "react";
 import {useAppSelector} from "../../store/hooks.ts";
 import useActions from "../../hooks/useActions.ts";
 import {CartItem} from "../../types/CartTypes.ts";
+import {formatToCurrency} from "../../utils/formatToCurrency.ts";
 
 const Card: FC<CartItem> = ({product}) => {
 	const basket = useAppSelector(state => state.cart.items);
@@ -25,7 +26,7 @@ const Card: FC<CartItem> = ({product}) => {
 		<div className={styles.card}>
 			<h3>{product.title}</h3>
 
-			<span className={styles.price}>${product.price}</span>
+			<span className={styles.price}>{formatToCurrency(product.price)}</span>
 
 			<div className={styles.card_counter}>
 				<button onClick={() => buttonsCounterHandler(-1)}>-</button>
