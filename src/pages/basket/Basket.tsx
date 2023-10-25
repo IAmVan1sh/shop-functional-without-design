@@ -9,12 +9,7 @@ import {formatToCurrency} from "../../utils/formatToCurrency.ts";
 
 const Basket: FC = () => {
 	const basket = useAppSelector(state => state.cart.items);
-	let sum = 0;
-
-	for (const num of basket) {
-		const temp = num.product.price * num.quantity;
-		sum += temp;
-	}
+	const totalAmount = basket.reduce((total, currentItem) => total + currentItem.product.price * currentItem.quantity, 0);
 	
 	return (
 		<main>
@@ -46,7 +41,7 @@ const Basket: FC = () => {
 
 						<h1>Summary</h1>
 
-						<span>PRICE: {formatToCurrency(sum)}</span>
+						<span>PRICE: {formatToCurrency(totalAmount)}</span>
 
 					</div>
 
