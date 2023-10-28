@@ -3,8 +3,10 @@ import {FC} from "react";
 import useActions from "../../hooks/useActions.ts";
 import CardType from "../../types/CardTypes.ts";
 import {formatToCurrency} from "../../utils/formatToCurrency.ts";
+import {useAppSelector} from "../../store/hooks.ts";
 
 const Card: FC<CardType> = ({product}) => {
+	const basket = useAppSelector(state => state.cart.items);
 	const { toggleCart} = useActions();
 
 	return (
@@ -14,7 +16,13 @@ const Card: FC<CardType> = ({product}) => {
 			<span className={styles.price}>{formatToCurrency(product.price)}</span>
 
 			<button onClick={() => toggleCart({product: product, quantity: 1})}>
-				Add to cart
+				{
+					basket.some(item => item.id === product.id)
+						?
+						"Remove from cart"
+						:
+						"Add to cart"
+				}
 			</button>
 		</div>
 	);

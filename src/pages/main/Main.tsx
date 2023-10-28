@@ -21,11 +21,7 @@ const Main = () => {
 
 			<section>
 				{CardsBase.map(product =>
-					basket.some(element => element.id === product.id)
-						?
-						""
-						:
-						<Card key={product.id} id={product.id} product={product}/>
+					<Card key={product.id} id={product.id} product={product}/>
 				)}
 			</section>
 
