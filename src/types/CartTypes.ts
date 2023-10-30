@@ -7,7 +7,6 @@ export interface CartItem {
 }
 
 export interface CartAction extends Omit<CartItem, "id"> {
-
 }
 
 export interface InitialStateType {

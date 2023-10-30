@@ -3,9 +3,11 @@ import {CartReducer} from "./cart/Cart.slice.ts";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist/es/constants"; // defaults to localStorage for web
+import {FetchCartReducer} from "./fetchCart/FetchCart.slice.js";
 
 const rootReducer = combineReducers({
 	cart: CartReducer,
+	fetchCart: FetchCartReducer,
 });
 
 const persistConfig = {
