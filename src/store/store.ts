@@ -1,9 +1,9 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {CartReducer} from "./cart/Cart.slice.ts";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist/es/constants"; // defaults to localStorage for web
-import {FetchCartReducer} from "./fetchCart/FetchCart.slice.js";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist/es/constants";
+import {FetchCartReducer} from "./fetchCart/FetchCart.slice.ts";
 
 const rootReducer = combineReducers({
 	cart: CartReducer,

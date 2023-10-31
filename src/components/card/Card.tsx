@@ -15,6 +15,8 @@ const Card: FC<CardType> = ({product}) => {
 
 			<span className={styles.price}>{formatToCurrency(product.price)}</span>
 
+			<span >{product.description}</span>
+
 			<button onClick={() => toggleCart({product: product, quantity: 1})}>
 				{
 					basket.some(item => item.id === product.id)

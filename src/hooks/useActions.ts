@@ -2,7 +2,7 @@ import {useAppDispatch} from "../store/hooks.ts";
 import {useMemo} from "react";
 import {CartActions} from "../store/cart/Cart.slice.ts";
 import {bindActionCreators} from "@reduxjs/toolkit";
-import {FetchCartActions} from "../store/fetchCart/FetchCart.slice.js";
+import * as FetchCartActions from "../store/fetchCart/FetchCart.actions.ts";
 
 const rootActions = {
 	...CartActions,
