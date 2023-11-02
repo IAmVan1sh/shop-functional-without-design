@@ -11,21 +11,26 @@ const Card: FC<CardType> = ({product}) => {
 
 	return (
 		<div className={styles.card}>
-			<h3>{product.title}</h3>
+			<img alt={`${product.title}${product.brand}.jpg`} src={product.thumbnail}/>
 
-			<span className={styles.price}>{formatToCurrency(product.price)}</span>
+			<h3>{product.title} ({product.brand})</h3>
 
-			<span >{product.description}</span>
+			<span>{product.description}</span>
 
-			<button onClick={() => toggleCart({product: product, quantity: 1})}>
-				{
-					basket.some(item => item.id === product.id)
-						?
-						"Remove from cart"
-						:
-						"Add to cart"
-				}
-			</button>
+			<div className={styles.addToCart}>
+				<span>{formatToCurrency(product.price)}</span>
+
+				<button onClick={() => toggleCart({product: product, quantity: 1})}>
+					{
+						basket.some(item => item.id === product.id)
+							?
+							"Remove from cart"
+							:
+							"Add to cart"
+					}
+				</button>
+			</div>
+
 		</div>
 	);
 };

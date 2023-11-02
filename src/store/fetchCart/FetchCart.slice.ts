@@ -23,7 +23,6 @@ export const FetchCartSlice = createSlice({
 				if (action.payload !== undefined) {
 					state.items = action.payload;
 				} else {
-					console.log("action.payload is undefined");
 					state.items = [];
 				}
 			})

@@ -1,0 +1,14 @@
+.popUp {
+	background-color: #424141;
+	padding: 6px 16px;
+	border-radius: 50px;
+
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+
+	& span {
+		color: green;
+	}
+
+}

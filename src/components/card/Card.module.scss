@@ -1,3 +1,16 @@
+button {
+	border: 0;
+	border-radius: 6px;
+	background-color: #6e6e6e;
+
+	&:hover {
+		background-color: #969696;
+	}
+	&:active {
+		background-color: #868686;
+	}
+}
+
 .card {
 	display: flex;
 	flex-direction: column;
@@ -12,38 +25,45 @@
 
 	// Title
 	& h3 {
-		line-height: 14px;
+		line-height: 16px;
 		padding: 0;
-		margin: 0;
-	}
-
-	// Button
-	& button {
-		border: 0;
-		border-radius: 6px;
-		background-color: #6e6e6e;
-
-		&:hover {
-			background-color: #969696;
-		}
-		&:active {
-			background-color: #868686;
-		}
-	}
-
-	& > button {
-		cursor: pointer;
-		padding: 4px 18px;
 		margin-top: 14px;
 	}
-}
 
-// Price
-.price {
-	display: block;
-	font-weight: 400;
-	color: #1baf1b;
-	margin-top: 14px;
+	// Thumbnail
+	& img {
+		color: indianred;
+		width: 250px;
+		height: 250px;
+		border-radius: 10px;
+	}
+
+	// Description
+	& > span {
+		margin-top: 14px;
+	}
+
+	// Add to cart
+	& .addToCart {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 8px;
+
+		// Price
+		& span {
+			font-size: 20px;
+			font-weight: 400;
+			color: #1baf1b;
+		}
+
+		& > button {
+			cursor: pointer;
+			width: 150px;
+			padding: 4px 18px;
+		}
+
+	}
+
 }
 
 // Counter
@@ -69,4 +89,14 @@
 		width: 24px;
 		height: 24px;
 	}
+}
+
+// Cart card container
+.cartCardContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100%;
+	padding: 0;
+	margin-left: 20px;
 }

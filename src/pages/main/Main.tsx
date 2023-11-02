@@ -41,6 +41,8 @@ const Main = () => {
 						<Card key={product.id} id={product.id} product={{
 							id: product.id,
 							title: product.title,
+							brand: product.brand,
+							thumbnail: product.thumbnail,
 							description: product.description,
 							price: product.price
 						}}/>
