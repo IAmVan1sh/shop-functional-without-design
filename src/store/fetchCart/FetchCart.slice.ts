@@ -19,11 +19,11 @@ export const FetchCartSlice = createSlice({
 			})
 			.addCase(getCart.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log(action.payload);
 
 				if (action.payload !== undefined) {
 					state.items = action.payload;
 				} else {
+					console.log("action.payload is undefined");
 					state.items = [];
 				}
 			})
