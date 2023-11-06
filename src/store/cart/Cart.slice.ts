@@ -1,27 +1,26 @@
 import {CaseReducer, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CartAction, InitialStateType} from "../../types/CartTypes.ts";
+import {CartItem, changeQuantityAction, InitialStateType} from "../../types/CartTypes.ts";
 
 const initialState: InitialStateType = {
 	items: []
 };
 
-const toggleCart: CaseReducer<InitialStateType, PayloadAction<CartAction>> = (state, {payload: item}) => {
-	const isExistIndex = state.items.findIndex(c => c.id === item.product.id);
-
-	if (isExistIndex !== -1) {
-		state.items.splice(isExistIndex, 1);
+const toggleCart: CaseReducer<InitialStateType, PayloadAction<CartItem>> = (state, { payload: product }) => {
+	const isExist = state.items.find(item => item.product.id === product.product.id);
+	if (isExist) {
+		state.items = state.items.filter(
+			item => item !== isExist
+		);
 	} else {
-		state.items.push({ ...item, id: item.product.id });
+		state.items.push(product);
 	}
 };
 
-const changeQuantity: CaseReducer<InitialStateType, PayloadAction<CartAction>> = (state, {payload: item}) => {
-	const isExistIndex = state.items.findIndex(c => c.id === item.product.id);
-
-	if (isExistIndex !== -1) {
-		state.items[isExistIndex].quantity += item.quantity;
-	}
+const changeQuantity: CaseReducer<InitialStateType, PayloadAction<changeQuantityAction>> = (state, { payload: { id, type }}) => {
+	const item = state.items.find(item => item.product.id === id);
+	if (item) type === "plus" ? item.quantity++ : item.quantity--;
 };
+
 
 const CartSlice = createSlice({
 	name: "cart",

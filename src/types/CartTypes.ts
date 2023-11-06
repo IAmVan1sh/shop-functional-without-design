@@ -9,6 +9,11 @@ export interface CartItem {
 export interface CartAction extends Omit<CartItem, "id"> {
 }
 
+export interface changeQuantityAction {
+    id: number;
+    type: "minus" | "plus";
+}
+
 export interface InitialStateType {
     items: CartItem[];
 }

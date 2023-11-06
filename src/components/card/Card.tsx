@@ -20,7 +20,7 @@ const Card: FC<CardType> = ({product}) => {
 			<div className={styles.addToCart}>
 				<span>{formatToCurrency(product.price)}</span>
 
-				<button onClick={() => toggleCart({product: product, quantity: 1})}>
+				<button onClick={() => toggleCart({id: product.id, product: product, quantity: 1})}>
 					{
 						basket.some(item => item.id === product.id)
 							?

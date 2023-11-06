@@ -8,16 +8,16 @@ import {formatToCurrency} from "../../utils/formatToCurrency.ts";
 const Card: FC<CartItem> = ({product}) => {
 	const basket = useAppSelector(state => state.cart.items);
 	const { toggleCart, changeQuantity} = useActions();
-	const index = basket.findIndex(element => element.id === product.id);
+	const itemIndex = basket.findIndex(element => element.id === product.id);
 
-	const buttonsCounterHandler = async (value: number) => {
-		if (value < 0) {
-			if (basket[index].quantity + value > 0) {
-				changeQuantity({product: product, quantity: value});
+	const buttonsCounterHandler = (action: "minus" | "plus") => {
+		if (action === "minus") {
+			if (basket[itemIndex].quantity - 1 > 0) {
+				changeQuantity({id: product.id, type: action});
 			}
 		} else {
-			if (basket[index].quantity + value < 100) {
-				changeQuantity({product: product, quantity: value});
+			if (basket[itemIndex].quantity + 1 < 100) {
+				changeQuantity({ id: product.id, type: action});
 			}
 		}
 	};
@@ -35,18 +35,18 @@ const Card: FC<CartItem> = ({product}) => {
 					<span>{product.description}</span>
 
 					<div className={styles.card_counter}>
-						<button onClick={() => buttonsCounterHandler(-1)}>-</button>
+						<button onClick={() => buttonsCounterHandler("minus")}>-</button>
 
-						<span>{basket[index].quantity}</span>
+						<span>{basket[itemIndex].quantity}</span>
 
-						<button onClick={() => buttonsCounterHandler(1)}>+</button>
+						<button onClick={() => buttonsCounterHandler("plus")}>+</button>
 					</div>
 
 					<div className={styles.addToCart}>
 
 						<span>{formatToCurrency(product.price)}</span>
 
-						<button onClick={() => toggleCart({product: product, quantity: 1})}>
+						<button onClick={() => toggleCart({id: product.id,product: product, quantity: 1})}>
 							Remove from cart
 						</button>
 

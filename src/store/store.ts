@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
 	key: "rtk-project",
 	storage,
-	whitelist: ["fetchCart"]
+	whitelist: ["cart", "fetchCart"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
