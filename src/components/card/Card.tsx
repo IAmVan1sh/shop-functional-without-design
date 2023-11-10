@@ -1,23 +1,23 @@
 import styles from "./Card.module.scss";
 import {FC} from "react";
 import useActions from "../../hooks/useActions.ts";
-import CardType from "../../types/CardTypes.ts";
 import {formatToCurrency} from "../../utils/formatToCurrency.ts";
 import {useAppSelector} from "../../store/hooks.ts";
+import {CartItemType} from "../../types/CartTypes.ts";
 
-const Card: FC<CardType> = ({product}) => {
+const Card: FC<CartItemType> = (props) => {
 	const basket = useAppSelector(state => state.cart.items);
 	const { toggleCart} = useActions();
 
 	return (
 		<div className={styles.card}>
-			<h3>{product.title}</h3>
+			<h3>{props.title}</h3>
 
-			<span className={styles.price}>{formatToCurrency(product.price)}</span>
+			<span className={styles.price}>{formatToCurrency(props.price)}</span>
 
-			<button onClick={() => toggleCart({product: product, quantity: 1})}>
+			<button onClick={() => toggleCart({...props, quantity: 1})}>
 				{
-					basket.some(item => item.id === product.id)
+					basket.some(item => item.id === props.id)
 						?
 						"Remove from cart"
 						:

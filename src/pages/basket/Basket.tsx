@@ -9,7 +9,7 @@ import {formatToCurrency} from "../../utils/formatToCurrency.ts";
 
 const Basket: FC = () => {
 	const basket = useAppSelector(state => state.cart.items);
-	const totalAmount = basket.reduce((total, currentItem) => total + currentItem.product.price * currentItem.quantity, 0);
+	const totalAmount = basket.reduce((total, currentItem) => total + currentItem.price * currentItem.quantity, 0);
 	
 	return (
 		<main>
@@ -23,8 +23,8 @@ const Basket: FC = () => {
 			<div className={styles.body}>
 
 				<section>
-					{basket.map(cart =>
-						<CartCard key={cart.id} id={cart.id} product={cart.product} quantity={1}/>
+					{basket.map(item =>
+						<CartCard key={item.id} {...item} />
 					)}
 
 					{basket.length === 0 &&
