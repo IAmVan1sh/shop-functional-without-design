@@ -15,8 +15,7 @@ $back-icon-size: 30px;
 .body {
 	display: flex;
 
-	& section {
-		padding: 10px;
+	& > section {
 		width: 100%;
 	}
 

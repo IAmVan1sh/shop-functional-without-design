@@ -1,25 +1,17 @@
-import {useAppSelector} from "../../store/hooks.ts";
 import {NavLink} from "react-router-dom";
 import {MAIN_ROUTE} from "../../utils/consts.ts";
-import {BiArrowBack} from "react-icons/bi";
 import styles from "./Basket.module.scss";
 import {FC} from "react";
 import CartCard from "../../components/card/CartCard.tsx";
 import {formatToCurrency} from "../../utils/formatToCurrency.ts";
+import {useBasket} from "../../hooks/useBasket.ts";
 
 const Basket: FC = () => {
-	const basket = useAppSelector(state => state.cart.items);
+	const basket = useBasket();
 	const totalAmount = basket.reduce((total, currentItem) => total + currentItem.price * currentItem.quantity, 0);
 	
 	return (
 		<main>
-
-			<header className={styles.basket}>
-				<NavLink to={MAIN_ROUTE}>
-					<BiArrowBack />
-				</NavLink>
-			</header>
-
 			<div className={styles.body}>
 
 				<section>

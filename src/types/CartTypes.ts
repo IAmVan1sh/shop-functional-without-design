@@ -1,7 +1,5 @@
 import ProductType from "./ProductTypes.ts";
 
-export interface CartAction extends Omit<ProductType, "id"> {}
-
 export interface CartItemType extends ProductType {
     quantity: number;
 }

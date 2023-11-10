@@ -1,15 +1,17 @@
 import {api} from "./api.ts";
 import {CartItemType} from "../../types/CartTypes.ts";
+import ProductType, {FetchedProductsType} from "../../types/ProductTypes.ts";
 
 export const productsApi = api.injectEndpoints({
 	endpoints: build => ({
-		getProducts: build.query<CartItemType[], void>({
+		getProducts: build.query<ProductType[], void>({
 			query: () => "/",
+			transformResponse: (response: FetchedProductsType) => response.products,
 		}),
-		getProductById: build.query<CartItemType, number>({
+		getProductById: build.query<FetchedProductsType, number>({
 			query: id => `/${id}`,
 		}),
-		createProducts: build.mutation<CartItemType, Partial<CartItemType> & Pick<CartItemType, "id">>({
+		createProducts: build.mutation<FetchedProductsType, Partial<FetchedProductsType> & Pick<CartItemType, "id">>({
 			query: (product) => ({
 				body: product,
 				url: "/",
