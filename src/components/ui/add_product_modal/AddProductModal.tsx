@@ -1,14 +1,14 @@
 import {Fragment, useState} from "react";
 import styles from "./AddProductModal.module.scss";
-import Button from "../../ui/button/Button.tsx";
-import Input from "../../ui/Input/Input.tsx";
+import Button from "../button/Button.tsx";
+import Input from "../Input/Input.tsx";
 
 const AddProductModal = () => {
-	const [modal, setModal] = useState<"none" | "block">("none");
+	const [modal, setModal] = useState<"none" | "flex">("none");
 
 	function modalHandler() {
 		if (modal === "none") {
-			setModal("block");
+			setModal("flex");
 		} else {
 			setModal("none");
 		}
