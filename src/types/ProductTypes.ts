@@ -12,8 +12,6 @@ interface ProductType {
     images: string[],
 }
 
-
-
 export interface FetchedProductsType {
     products: ProductType[];
 }

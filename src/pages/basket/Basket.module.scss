@@ -15,11 +15,12 @@ $back-icon-size: 30px;
 .body {
 	display: flex;
 
-	& > section {
+	& section {
 		width: 100%;
 	}
 
 	& section:last-child {
+		margin-left: 10px;
 		max-width: 500px;
 	}
 }

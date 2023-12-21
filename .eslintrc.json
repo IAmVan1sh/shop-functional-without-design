@@ -1,4 +1,21 @@
 {
+//    "settings": {
+//        "import/resolver": {
+//            "node": {
+//                "extentions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+//            },
+//            "alias": {
+//                "extentions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
+//                "map": [
+//                    ["@/ui", "./src/components/ui"],
+//                    ["@/layout", "./src/components/layout"],
+//                    ["@/components", "./src/components"],
+//                    ["@/src", "./src"],
+//                    ["@/", "./"]
+//                ]
+//            }
+//        }
+//    },
     "env": {
         "browser": true,
         "es2021": true

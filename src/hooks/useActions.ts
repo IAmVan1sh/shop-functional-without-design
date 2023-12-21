@@ -1,4 +1,4 @@
-import {useAppDispatch} from "../store/hooks.ts";
+import {useAppDispatch} from "./typedHooks.ts";
 import {useMemo} from "react";
 import {CartActions} from "../store/cart/Cart.slice.ts";
 import {bindActionCreators} from "@reduxjs/toolkit";

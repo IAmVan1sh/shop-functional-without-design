@@ -1,5 +1,5 @@
 import {useGetProductsQuery} from "../../store/api/products.api.ts";
-import Card from "../../components/card/Card.tsx";
+import Card from "../../components/layout/card/Card.tsx";
 
 const Main = () => {
 	const { isLoading, data } = useGetProductsQuery();
@@ -11,7 +11,7 @@ const Main = () => {
 					data ? data.map(item =>
 						<Card key={item.id} {...item} quantity={1}/>
 					) :
-						<span>Products NOT FOUND</span>
+						<span>Products not found</span>
 				}
 			</section>
 		</main>

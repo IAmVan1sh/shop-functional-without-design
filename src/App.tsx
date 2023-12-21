@@ -3,7 +3,7 @@ import store, {persistor} from "./store/store.ts";
 import {Provider} from "react-redux";
 import {PersistGate} from "redux-persist/integration/react";
 import {BrowserRouter} from "react-router-dom";
-import NavBar from "./components/navbar/NavBar.tsx";
+import NavBar from "./components/layout/navbar/NavBar.tsx";
 
 function App() {
 	return (

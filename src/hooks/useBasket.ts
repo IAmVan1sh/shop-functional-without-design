@@ -1,4 +1,4 @@
-import {useAppSelector} from "../store/hooks.ts";
+import {useAppSelector} from "./typedHooks.ts";
 
 export const useBasket = () => {
 	return useAppSelector(state => state.cart.items);

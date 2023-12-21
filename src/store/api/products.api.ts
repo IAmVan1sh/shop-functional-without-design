@@ -21,4 +21,4 @@ export const productsApi = api.injectEndpoints({
 	})
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useGetProductByIdQuery } = productsApi;

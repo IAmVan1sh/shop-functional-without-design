@@ -4,7 +4,15 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
+//    "baseUrl": "./redux-toolkit/",
+//    "paths": {
+//      "@/ui/*": ["./src/components/ui"],
+//      "@/layout/*": ["./src/components/layout"],
+//      "@/components/*": ["./src/components"],
+//      "@/src/*": ["./src/*"],
+//      "@/*": ["./*"]
+//    }
   },
   "include": ["vite.config.ts"]
 }

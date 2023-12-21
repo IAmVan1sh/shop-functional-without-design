@@ -3,9 +3,8 @@ import {API_URL} from "../../utils/consts.ts";
 
 export const api = createApi({
 	baseQuery: fetchBaseQuery({
-		baseUrl: API_URL,
+		baseUrl: API_URL
 	}),
-
 	reducerPath: "api",
 	tagTypes: ["product"],
 	endpoints: build => ({
