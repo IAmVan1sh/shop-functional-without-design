@@ -1,16 +1,59 @@
-import {Fragment, useState} from "react";
+import {FormEvent, Fragment, useState} from "react";
 import styles from "./AddProductModal.module.scss";
 import Button from "../button/Button.tsx";
 import Input from "../Input/Input.tsx";
+import ProductType from "../../../types/ProductTypes.ts";
+import { useCreateProductsMutation, useGetProductsQuery } from "../../../store/api/products.api.ts";
+
+const defaultFormValue: ProductType = {
+	id: -1,
+	title: "",
+	description: "",
+	price: 0,
+	discountPercentage: 0,
+	rating: 0,
+	stock: 0,
+	brand: "",
+	category: "",
+	thumbnail: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+	images: [
+		"https://i.dummyjson.com/data/products/1/1.jpg",
+		"https://i.dummyjson.com/data/products/1/2.jpg",
+		"https://i.dummyjson.com/data/products/1/3.jpg",
+		"https://i.dummyjson.com/data/products/1/4.jpg",
+		"https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+	]
+};
 
 const AddProductModal = () => {
-	const [modal, setModal] = useState<"none" | "flex">("none");
+	const [	modal, setModal ] = useState<"none" | "flex">("none");
+	const [	product, setProduct ] = useState<ProductType>(defaultFormValue);
+	const [ createProduct ] = useCreateProductsMutation();
+	const { data } = useGetProductsQuery();
 
 	function modalHandler() {
 		if (modal === "none") {
 			setModal("flex");
 		} else {
 			setModal("none");
+		}
+	}
+
+	function handleSubmit(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		createProduct({
+			...product,
+			id: data ? data.length + 1 : Date.now(),
+		}).then(() => {
+			setProduct(defaultFormValue);
+		});
+	}
+
+	function counterHandler(value: number, currentCounter: string) {
+		if (value >= 0 && value <= 1000000) {
+			setProduct({...product, [currentCounter]: value});
+		} else if (value > 1000000) {
+			setProduct({...product, [currentCounter]: 1000000});
 		}
 	}
 
@@ -30,26 +73,63 @@ const AddProductModal = () => {
 					className={styles.modalContent}
 					onMouseDown={e => e.stopPropagation()}
 				>
-					<h2>Add new product</h2>
+					<form onSubmit={event => handleSubmit(event)}>
 
-					<label>Name</label>
-					<Input/>
+						<h2>Add new product</h2>
 
-					<label>Brand</label>
-					<Input/>
+						<label>Title</label>
+						<Input
+							type="text"
+							placeholder="Product title"
+							value={product.title}
+							onChange={event => setProduct({...product, title: event.target.value})}
+						/>
 
-					<label>Category</label>
-					<Input/>
+						<label>Brand</label>
+						<Input
+							type="text"
+							placeholder="Product brand"
+							value={product.brand}
+							onChange={event => setProduct({...product, brand: event.target.value})}
+						/>
 
-					<label>Description</label>
-					<Input/>
+						<label>Category</label>
+						<Input
+							type="text"
+							placeholder="Product category"
+							value={product.category}
+							onChange={event => setProduct({...product, category: event.target.value})}
+						/>
 
-					<label>stock</label>
-					<Input/>
+						<label>Description</label>
+						<Input
+							type="text"
+							placeholder="Product description"
+							value={product.description}
+							onChange={event => setProduct({...product, description: event.target.value})}
+						/>
 
-					<label>price</label>
-					<Input/>
+						<label htmlFor="stock">stock</label>
+						<Input
+							id="stock"
+							type="number"
+							placeholder="Product stock"
+							value={product.stock}
+							onChange={event => counterHandler(Number(event.target.value), event.target.id)}
+						/>
 
+						<label>price</label>
+						<Input
+							id="price"
+							type="number"
+							placeholder="Product price"
+							value={product.price}
+							onChange={event => counterHandler(Number(event.target.value), event.target.id)}
+						/>
+
+						<Button type="submit" onClick={modalHandler}>Create</Button>
+
+					</form>
 				</section>
 			</div>
 

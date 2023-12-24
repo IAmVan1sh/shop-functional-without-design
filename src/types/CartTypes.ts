@@ -6,7 +6,7 @@ export interface CartItemType extends ProductType {
 
 export interface changeQuantityAction {
     id: number;
-    type: "minus" | "plus";
+    value: number;
 }
 
 export interface InitialStateType {

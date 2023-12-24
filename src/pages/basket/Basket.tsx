@@ -14,6 +14,7 @@ const Basket: FC = () => {
 		<main className={styles.body}>
 
 			<section>
+
 				{basket.map(item =>
 					<CartCard key={item.id} {...item} />
 				)}
@@ -24,6 +25,7 @@ const Basket: FC = () => {
 							<NavLink to={MAIN_ROUTE}>Go shopping</NavLink>
 						</div>
 				}
+
 			</section>
 
 			<section>

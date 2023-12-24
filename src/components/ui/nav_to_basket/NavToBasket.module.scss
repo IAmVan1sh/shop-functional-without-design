@@ -6,6 +6,8 @@ $basket-icon-size: 30px;
 	& > a > svg {
 		height: $basket-icon-size;
 		width: $basket-icon-size;
+		fill: #FFADFF;
+
 		position: relative;
 	}
 
@@ -13,6 +15,7 @@ $basket-icon-size: 30px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
 		background-color: darkorchid;
 		width: calc($basket-icon-size / 1.6);
 		height: calc($basket-icon-size / 1.6);

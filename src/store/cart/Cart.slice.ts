@@ -18,9 +18,17 @@ const toggleCart: CaseReducer<InitialStateType, PayloadAction<CartItemType>> = (
 	}
 };
 
-const changeQuantity: CaseReducer<InitialStateType, PayloadAction<changeQuantityAction>> = (state, { payload: { id, type }}) => {
+const changeQuantity: CaseReducer<InitialStateType, PayloadAction<changeQuantityAction>> = (state, { payload: { id, value }}) => {
 	const item = state.items.find(item => item.id === id);
-	if (item) type === "plus" ? item.quantity++ : item.quantity--;
+	if (item) {
+		if (value >= 1 && value <= 99) {
+			item.quantity = value;
+		} else if (value > 99) {
+			item.quantity = 99;
+		} else {
+			item.quantity = 1;
+		}
+	}
 };
 
 
