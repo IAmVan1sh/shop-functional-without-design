@@ -3,7 +3,6 @@ import {CartItemType, changeQuantityAction, InitialStateType} from "../../types/
 
 const initialState: InitialStateType = {
 	items: [],
-	isLoading: false,
 	error: null,
 };
 

@@ -11,6 +11,5 @@ export interface changeQuantityAction {
 
 export interface InitialStateType {
     items: CartItemType[];
-    isLoading: boolean;
     error: string | null;
 }

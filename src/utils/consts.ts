@@ -2,4 +2,4 @@ export const MAIN_ROUTE: string = "/";
 export const BASKET_ROUTE: string = "basket";
 
 
-export const API_URL: string = "http://localhost:3030/products"; // https://dummyjson.com/products
+export const API_URL: string = "https://weak-duck-beret.cyclic.app/api"; // https://dummyjson.com/products
