@@ -18,7 +18,7 @@ const Card: FC<CartItemType> = (props) => {
 
 			<Button onClick={() => toggleCart({...props, quantity: 1})}>
 				{
-					basket.some(item => item.id === props.id)
+					basket.some(item => item._id === props._id)
 						?
 						"Remove from cart"
 						:

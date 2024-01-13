@@ -7,7 +7,7 @@ const initialState: InitialStateType = {
 };
 
 const toggleCart: CaseReducer<InitialStateType, PayloadAction<CartItemType>> = (state, { payload: product }) => {
-	const isExist = state.items.find(item => item.id === product.id);
+	const isExist = state.items.find(item => item._id === product._id);
 	if (isExist) {
 		state.items = state.items.filter(
 			item => item !== isExist
@@ -18,7 +18,7 @@ const toggleCart: CaseReducer<InitialStateType, PayloadAction<CartItemType>> = (
 };
 
 const changeQuantity: CaseReducer<InitialStateType, PayloadAction<changeQuantityAction>> = (state, { payload: { id, value }}) => {
-	const item = state.items.find(item => item.id === id);
+	const item = state.items.find(item => item._id === id);
 	if (item) {
 		if (value >= 1 && value <= 99) {
 			item.quantity = value;

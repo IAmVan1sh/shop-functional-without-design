@@ -7,7 +7,7 @@ export const productsApi = api.injectEndpoints({
 		getProductById: build.query<FetchedProductsType, number>({
 			query: id => `/${id}`,
 		}),
-		createProducts: build.mutation<FetchedProductsType, Partial<FetchedProductsType> & Pick<CartItemType, "id">>({
+		createProducts: build.mutation<FetchedProductsType, Partial<FetchedProductsType> & Pick<CartItemType, "_id">>({
 			query: (product) => ({
 				body: product,
 				url: "/",

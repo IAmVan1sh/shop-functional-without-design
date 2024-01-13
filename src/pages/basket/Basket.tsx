@@ -16,7 +16,7 @@ const Basket: FC = () => {
 			<section>
 
 				{basket.map(item =>
-					<CartCard key={item.id} {...item} />
+					<CartCard key={item._id} {...item} />
 				)}
 
 				{basket.length === 0 &&

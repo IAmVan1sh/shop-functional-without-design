@@ -9,7 +9,7 @@ const Main = () => {
 			<section>
 				{isLoading ? <span>Loading...</span> :
 					data ? data.map(item =>
-						<Card key={item.id} {...item} quantity={1}/>
+						<Card key={item._id} {...item} quantity={1}/>
 					) :
 						<span>Products not found</span>
 				}

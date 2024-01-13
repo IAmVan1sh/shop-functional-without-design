@@ -4,13 +4,15 @@ import ProductType from "../../types/ProductTypes.ts";
 
 export const api = createApi({
 	baseQuery: fetchBaseQuery({
-		baseUrl: API_URL + "/product"
+		baseUrl: API_URL,
+		prepareHeaders: headers => headers,
+		credentials: "include",
 	}),
 	reducerPath: "api",
 	tagTypes: ["Product"],
 	endpoints: build => ({
 		getProducts: build.query<ProductType[], void>({
-			query: () => "",
+			query: () => "product/get-products",
 			providesTags: () => [{
 				type: "Product",
 			}]

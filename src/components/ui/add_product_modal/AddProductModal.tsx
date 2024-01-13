@@ -6,7 +6,7 @@ import ProductType from "../../../types/ProductTypes.ts";
 import { useCreateProductsMutation, useGetProductsQuery } from "../../../store/api/products.api.ts";
 
 const defaultFormValue: ProductType = {
-	id: -1,
+	_id: -1,
 	title: "",
 	description: "",
 	price: 0,
@@ -43,7 +43,7 @@ const AddProductModal = () => {
 		event.preventDefault();
 		createProduct({
 			...product,
-			id: data ? data.length + 1 : Date.now(),
+			_id: data ? data.length + 1 : Date.now(),
 		}).then(() => {
 			setProduct(defaultFormValue);
 		});
