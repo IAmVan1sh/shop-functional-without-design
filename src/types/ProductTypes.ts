@@ -1,5 +1,5 @@
 interface ProductType {
-    _id: number,
+    _id: string,
     title: string,
     description: string,
     price: number,
@@ -12,8 +12,6 @@ interface ProductType {
     images: string[],
 }
 
-export interface FetchedProductsType {
-    products: ProductType[];
-}
+export interface CreateProductType extends Omit<ProductType, "_id"> {}
 
 export default ProductType;

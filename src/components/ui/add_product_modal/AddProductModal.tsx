@@ -2,11 +2,10 @@ import {FormEvent, Fragment, useState} from "react";
 import styles from "./AddProductModal.module.scss";
 import Button from "../button/Button.tsx";
 import Input from "../Input/Input.tsx";
-import ProductType from "../../../types/ProductTypes.ts";
-import { useCreateProductsMutation, useGetProductsQuery } from "../../../store/api/products.api.ts";
+import {CreateProductType} from "../../../types/ProductTypes.ts";
+import { useCreateProductsMutation } from "../../../store/api/products.api.ts";
 
-const defaultFormValue: ProductType = {
-	_id: -1,
+const defaultFormValue: CreateProductType = {
 	title: "",
 	description: "",
 	price: 0,
@@ -27,9 +26,8 @@ const defaultFormValue: ProductType = {
 
 const AddProductModal = () => {
 	const [	modal, setModal ] = useState<"none" | "flex">("none");
-	const [	product, setProduct ] = useState<ProductType>(defaultFormValue);
+	const [	product, setProduct ] = useState<CreateProductType>(defaultFormValue);
 	const [ createProduct ] = useCreateProductsMutation();
-	const { data } = useGetProductsQuery();
 
 	function modalHandler() {
 		if (modal === "none") {
@@ -41,10 +39,7 @@ const AddProductModal = () => {
 
 	function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		createProduct({
-			...product,
-			_id: data ? data.length + 1 : Date.now(),
-		}).then(() => {
+		createProduct(product).then(() => {
 			setProduct(defaultFormValue);
 		});
 	}
@@ -109,7 +104,7 @@ const AddProductModal = () => {
 							onChange={event => setProduct({...product, description: event.target.value})}
 						/>
 
-						<label htmlFor="stock">stock</label>
+						<label htmlFor="stock">Stock</label>
 						<Input
 							id="stock"
 							type="number"
@@ -118,7 +113,7 @@ const AddProductModal = () => {
 							onChange={event => counterHandler(Number(event.target.value), event.target.id)}
 						/>
 
-						<label>price</label>
+						<label>Price</label>
 						<Input
 							id="price"
 							type="number"

@@ -1,17 +1,26 @@
 import {api} from "./api.ts";
-import {CartItemType} from "../../types/CartTypes.ts";
-import {FetchedProductsType} from "../../types/ProductTypes.ts";
+import ProductType, {CreateProductType} from "../../types/ProductTypes.ts";
 
 export const productsApi = api.injectEndpoints({
 	endpoints: build => ({
-		getProductById: build.query<FetchedProductsType, number>({
+		getProductById: build.query<ProductType[], number>({
 			query: id => `/${id}`,
 		}),
-		createProducts: build.mutation<FetchedProductsType, Partial<FetchedProductsType> & Pick<CartItemType, "_id">>({
+		createProducts: build.mutation<ProductType, Partial<CreateProductType>>({
 			query: (product) => ({
 				body: product,
-				url: "/",
+				url: "/product/create-product",
 				method: "POST",
+			}),
+			invalidatesTags: () => [{
+				type: "Product",
+			}]
+		}),
+		deleteProduct: build.mutation<string,  string>({
+			query: (_id) => ({
+				body: {_id},
+				url: "/product/delete-product",
+				method: "DELETE"
 			}),
 			invalidatesTags: () => [{
 				type: "Product",
@@ -20,4 +29,8 @@ export const productsApi = api.injectEndpoints({
 	})
 });
 
-export const { useGetProductsQuery, useCreateProductsMutation } = productsApi;
+export const {
+	useGetProductsQuery,
+	useCreateProductsMutation,
+	useDeleteProductMutation
+} = productsApi;

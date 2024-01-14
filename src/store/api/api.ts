@@ -12,10 +12,11 @@ export const api = createApi({
 	tagTypes: ["Product"],
 	endpoints: build => ({
 		getProducts: build.query<ProductType[], void>({
-			query: () => "product/get-products",
+			query: () => "/product/get-products",
 			providesTags: () => [{
 				type: "Product",
-			}]
+			}],
+			transformResponse: (response: ProductType[]) => response.reverse()
 		}),
 	}),
 });
