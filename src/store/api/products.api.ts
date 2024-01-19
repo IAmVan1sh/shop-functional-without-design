@@ -1,12 +1,12 @@
 import {api} from "./api.ts";
-import ProductType, {CreateProductType} from "../../types/ProductTypes.ts";
+import IProduct, {ICreateProduct} from "../../types/ProductTypes.ts";
 
 export const productsApi = api.injectEndpoints({
 	endpoints: build => ({
-		getProductById: build.query<ProductType[], number>({
+		getProductById: build.query<IProduct[], number>({
 			query: id => `/${id}`,
 		}),
-		createProducts: build.mutation<ProductType, Partial<CreateProductType>>({
+		createProducts: build.mutation<IProduct, Partial<ICreateProduct>>({
 			query: (product) => ({
 				body: product,
 				url: "/product/create-product",

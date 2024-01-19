@@ -1,5 +1,5 @@
 import {ButtonHTMLAttributes, DetailedHTMLProps} from "react";
 
-export interface ButtonType extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+export interface IButton extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
 	plusMinus?: boolean;
 }

@@ -1,4 +1,4 @@
-interface ProductType {
+interface IProduct {
     _id: string,
     title: string,
     description: string,
@@ -12,6 +12,6 @@ interface ProductType {
     images: string[],
 }
 
-export interface CreateProductType extends Omit<ProductType, "_id"> {}
+export interface ICreateProduct extends Omit<IProduct, "_id"> {}
 
-export default ProductType;
+export default IProduct;

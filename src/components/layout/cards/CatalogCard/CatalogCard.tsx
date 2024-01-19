@@ -1,13 +1,13 @@
-import styles from "./Card.module.scss";
+import styles from "./CatalogCard.module.scss";
 import {FC} from "react";
-import useActions from "../../../hooks/useActions.ts";
-import {formatToCurrency} from "../../../utils/formatToCurrency.ts";
-import {useAppSelector} from "../../../hooks/typedHooks.ts";
-import {CartItemType} from "../../../types/CartTypes.ts";
-import Button from "../../ui/button/Button.tsx";
-import {useDeleteProductMutation} from "../../../store/api/products.api.ts";
+import useActions from "../../../../hooks/useActions.ts";
+import {formatToCurrency} from "../../../../utils/formatToCurrency.ts";
+import {useAppSelector} from "../../../../hooks/typedHooks.ts";
+import {ICartItem} from "../../../../types/CartTypes.ts";
+import Button from "../../../ui/button/Button.tsx";
+import {useDeleteProductMutation} from "../../../../store/api/products.api.ts";
 
-const Card: FC<CartItemType> = (props) => {
+const CatalogCard: FC<ICartItem> = (props) => {
 	const basket = useAppSelector(state => state.cart.items);
 	const [ deleteProduct ] = useDeleteProductMutation();
 	const { toggleCart} = useActions();
@@ -15,8 +15,11 @@ const Card: FC<CartItemType> = (props) => {
 	return (
 		<div className={styles.card}>
 
+			<img className={styles.cardImage} alt="product photo" src={props.thumbnail}/>
+
+			<h3>{props.title.length > 50 ? `${props.title.slice(0, 48)}...` : props.title}</h3>
+
 			<div className={styles.cardContent}>
-				<h3>{props.title}</h3>
 
 				<span className={styles.price}>{formatToCurrency(props.price)}</span>
 
@@ -39,4 +42,4 @@ const Card: FC<CartItemType> = (props) => {
 	);
 };
 
-export default Card;
+export default CatalogCard;

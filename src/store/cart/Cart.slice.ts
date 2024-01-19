@@ -1,12 +1,12 @@
 import {CaseReducer, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CartItemType, changeQuantityAction, InitialStateType} from "../../types/CartTypes.ts";
+import {ICartItem, IChangeQuantityAction, IInitialState} from "../../types/CartTypes.ts";
 
-const initialState: InitialStateType = {
+const initialState: IInitialState = {
 	items: [],
 	error: null,
 };
 
-const toggleCart: CaseReducer<InitialStateType, PayloadAction<CartItemType>> = (state, { payload: product }) => {
+const toggleCart: CaseReducer<IInitialState, PayloadAction<ICartItem>> = (state, { payload: product }) => {
 	const isExist = state.items.find(item => item._id === product._id);
 	if (isExist) {
 		state.items = state.items.filter(
@@ -17,7 +17,7 @@ const toggleCart: CaseReducer<InitialStateType, PayloadAction<CartItemType>> = (
 	}
 };
 
-const changeQuantity: CaseReducer<InitialStateType, PayloadAction<changeQuantityAction>> = (state, { payload: { id, value }}) => {
+const changeQuantity: CaseReducer<IInitialState, PayloadAction<IChangeQuantityAction>> = (state, { payload: { id, value }}) => {
 	const item = state.items.find(item => item._id === id);
 	if (item) {
 		if (value >= 1 && value <= 99) {

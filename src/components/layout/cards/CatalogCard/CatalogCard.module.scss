@@ -1,0 +1,32 @@
+@use "src/styles/components";
+
+// Card Styles
+@include components.cardClass;
+// Card Content Styles
+@include components.cardContentClass;
+// Image thumbnail Styles
+@include components.cardImageClass;
+// Price Styles
+@include components.priceClass;
+
+
+.card {
+	grid-template-columns: 1fr 2fr 2fr;
+	grid-template-rows: 45px 55px;
+
+	// Title
+	& h3 {
+		grid-row: 1/2;
+		grid-column: 2/4;
+	}
+
+}
+
+.cardManage {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+
+	grid-row: 2/3;
+	grid-column: 3/4;
+}

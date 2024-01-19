@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom";
 import {MAIN_ROUTE} from "../../utils/consts.ts";
 import styles from "./Basket.module.scss";
 import {FC} from "react";
-import CartCard from "../../components/layout/card/CartCard.tsx";
+import CartCard from "../../components/layout/cards/BasketCard/BasketCard.tsx";
 import {formatToCurrency} from "../../utils/formatToCurrency.ts";
 import {useBasket} from "../../hooks/useBasket.ts";
 

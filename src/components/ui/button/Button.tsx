@@ -1,8 +1,8 @@
-import {ButtonType} from "../../../types/ButtonTypes.ts";
+import {IButton} from "../../../types/ButtonTypes.ts";
 import {FC} from "react";
 import styles from "./Button.module.scss";
 
-const Button: FC<ButtonType> = ({plusMinus, ...props}) => {
+const Button: FC<IButton> = ({plusMinus, ...props}) => {
 	return (
 		<button {...props} className={`${styles.modalButton} ${props.className} ${plusMinus && styles.cardCounter}`}>
 			{props.children}

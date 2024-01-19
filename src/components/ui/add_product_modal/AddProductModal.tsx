@@ -2,10 +2,10 @@ import {FormEvent, Fragment, useState} from "react";
 import styles from "./AddProductModal.module.scss";
 import Button from "../button/Button.tsx";
 import Input from "../Input/Input.tsx";
-import {CreateProductType} from "../../../types/ProductTypes.ts";
+import {ICreateProduct} from "../../../types/ProductTypes.ts";
 import { useCreateProductsMutation } from "../../../store/api/products.api.ts";
 
-const defaultFormValue: CreateProductType = {
+const defaultFormValue: ICreateProduct = {
 	title: "",
 	description: "",
 	price: 0,
@@ -26,7 +26,7 @@ const defaultFormValue: CreateProductType = {
 
 const AddProductModal = () => {
 	const [	modal, setModal ] = useState<"none" | "flex">("none");
-	const [	product, setProduct ] = useState<CreateProductType>(defaultFormValue);
+	const [	product, setProduct ] = useState<ICreateProduct>(defaultFormValue);
 	const [ createProduct ] = useCreateProductsMutation();
 
 	function modalHandler() {

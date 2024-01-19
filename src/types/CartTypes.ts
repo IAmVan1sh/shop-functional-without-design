@@ -1,15 +1,15 @@
-import ProductType from "./ProductTypes.ts";
+import IProduct from "./ProductTypes.ts";
 
-export interface CartItemType extends ProductType {
+export interface ICartItem extends IProduct {
     quantity: number;
 }
 
-export interface changeQuantityAction {
+export interface IChangeQuantityAction {
     id: string;
     value: number;
 }
 
-export interface InitialStateType {
-    items: CartItemType[];
+export interface IInitialState {
+    items: ICartItem[];
     error: string | null;
 }

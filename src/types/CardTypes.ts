@@ -1,8 +1,8 @@
-import ProductType from "./ProductTypes.ts";
+import IProduct from "./ProductTypes.ts";
 
-interface CardType {
+interface ICard {
     id: number;
-    product: ProductType;
+    product: IProduct;
 }
 
-export default CardType;
+export default ICard;

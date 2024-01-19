@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {API_URL} from "../../utils/consts.ts";
-import ProductType from "../../types/ProductTypes.ts";
+import IProduct from "../../types/ProductTypes.ts";
 
 export const api = createApi({
 	baseQuery: fetchBaseQuery({
@@ -11,12 +11,12 @@ export const api = createApi({
 	reducerPath: "api",
 	tagTypes: ["Product"],
 	endpoints: build => ({
-		getProducts: build.query<ProductType[], void>({
+		getProducts: build.query<IProduct[], void>({
 			query: () => "/product/get-products",
 			providesTags: () => [{
 				type: "Product",
 			}],
-			transformResponse: (response: ProductType[]) => response.reverse()
+			transformResponse: (response: IProduct[]) => response.reverse()
 		}),
 	}),
 });
